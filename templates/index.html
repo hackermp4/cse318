@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} CSE-318 Project {% endblock %}
+{% load static %}
+
+{% block page %}
+<!-- page -->
+<div class="page">
+    <div class="container">
+        <img src="{% static 'images/super.jpg' %}" height='350' alt="sdf">
+        <br><br><br><h2 align='center'>All Products</h2><br>
+        <div class="product_wrapper">
+            {% for item in products %}
+            <div class="card">
+                <img src="{{ item.image.url }}" alt="Denim Jeans" style="width:100%">
+                <h1>{{ item.name }}</h1>
+                <p class="price">Tk{{ item.final_price }}</p>
+                <p>
+                    {{ item.description }}
+                </p>
+                <p><button>Add to Cart</button></p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

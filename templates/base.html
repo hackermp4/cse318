@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block heads %} {% endblock %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %} CSE-318 Project {% endblock %}</title>
+</head>
+
+<body>
+    <!-- Header section -->
+    <div class="header">
+        <div class="inner-header">
+            <div class="container">
+                <div class="header-wrapper">
+                    <div class="logo">
+                        <a href="{% url 'index' %}">
+                            <h1 style="color:#FFFFFF">Supermarket</h1>
+                        </a>
+                    </div>
+                    <div class="navigation" id="nav">
+                        <ul>
+                            {% if request.session.client %}
+                            <li><a href="{% url 'logout' %}">{{ request.session.client }}</a></li>
+                            {% else %}
+                            <li><a href="{% url 'register' %}">Registration</a></li>
+                            <li><a href="{% url 'login' %}">Login</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header end -->
+
+    <!-- Page section -->
+    {% block page %} {% endblock %}
+
+    <!-- Footer section -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+
+                <div class="footer-item">
+                    <h3> Developed by </h3>
+                    <ul>
+                        <li>Md. Intishar Ishmam (15161103037)</li>
+                        <li>Shamrima Eye Noon Huda (17183103006)</li>
+                        <li>Nazmon Nahar Khanam Putul (17183103019)</li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3> CSE-318 </h3>
+                    <ul>
+                      
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    &#169; BUBT 2020
+                </div>
+                <div class="footer-bottom-right">
+                    Rupnagar R/A, Mirpur-2, Dhaka-1216, Bangladesh
+                </div>
+            </div>
+
+        </div>
+        <!-- Toggle menu javascript -->
+        <script src="{% static 'js/toggleMenu.js' %}"></script>
+
+        {% block scripts %} {% endblock %}
+    </div> <!-- Footer end -->
+</body>
+
+</html>
